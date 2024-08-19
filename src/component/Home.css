@@ -16,6 +16,7 @@ header
   box-shadow: -4px 0 8px rgba(0, 0, 0, .1);
 }
 
+/* NAVIGATION */
 nav
 {
   display: flex;
@@ -23,6 +24,7 @@ nav
   align-items: center;
   gap: 1em;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .logo
@@ -68,7 +70,10 @@ nav button:hover
   border-bottom-right-radius: 20px;
   transition: all .5s ease-in-out;
 }
+/* NAVIGATION ENDS */
 
+
+/* COVER */
 header .cover
 {
   display: flex;
@@ -77,15 +82,16 @@ header .cover
   gap: 1em;
   width: 100%;
   position: relative;
+  box-sizing: border-box;
 }
 
 .cover .left
 {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   gap: 1em;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .left h1
@@ -103,6 +109,7 @@ header .cover
   gap: 1em;
   /* background-color: #fff; */
   padding: 1em 0;
+  box-sizing: border-box;
 }
 
 .box
@@ -182,6 +189,10 @@ header .cover
   width: 100%;
 }
 
+/* COVER ENDS */
+
+
+/* FOOTER */
 footer
 {
   display: flex;
@@ -236,7 +247,7 @@ footer
   border-radius: 50%;
   transition: all .5s ease-in-out;
 }
-
+/* FOOTER ENDS */
 
 /* POPUP */
 
@@ -291,4 +302,69 @@ footer
     border-radius: 10px;
     border: none;
     padding: 1.2em 1.8em;
+}
+
+
+@media only screen and (max-width: 740px) 
+{
+  header
+  {
+    padding: .9em;
+  }
+
+  .right
+  {
+  display: none;
+  }
+
+  .social
+  {
+  justify-content: center;
+  align-items: center;
+  }
+
+  .social-icon
+  {
+  color: gold;
+  font-size: 1em;
+  }
+
+  .cover .left
+{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+footer
+{
+  flex-direction: column;
+  width: 100%;
+}
+
+.shopping
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: 1;
+}
+
+.company
+{
+  order: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* POPUP */
+.confirm
+{
+    width: 90%;
+}
+  
 }

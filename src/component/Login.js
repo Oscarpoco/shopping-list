@@ -36,33 +36,31 @@
 
 
 // CODE WITH REDUX
-
 import React, { useState } from 'react';
 import './Login.css';
 import { useDispatch } from 'react-redux';
-import { signIn, closeSignInForm } from '../store';
+import { loginUser, closeSignInForm } from '../store';
 
 function Login() {
+
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
 
-  // HANDLE LOGIN , STILL WITH DUMMY LOGIN UNTIL I UNDERSTAND ON HOW TO INCLUDE JSON-SERVER WITH REDUX
+  // HANDLE LOGIN
   const handleLogin = (e) => {
     e.preventDefault();
-    if (email === 'test@example.com' && password === 'password') {
-      dispatch(signIn());
-      dispatch(closeSignInForm());
-    } else {
-      alert('Invalid credentials');
-    }
+    dispatch(loginUser(email, password));
+    dispatch(closeSignInForm());
   };
+  // ENDS
 
   return (
     <div className="login">
-
       <div className="login-form">
         <h2>Login</h2>
+        
         {/* FORM */}
         <form onSubmit={handleLogin}>
           <div className="username">
@@ -84,7 +82,7 @@ function Login() {
             />
           </div>
           <button type="submit">Submit</button>
-          <p>Don't have an Account ? Register here.</p>
+          <p>Don't have an Account? Register here.</p>
         </form>
         {/* FORM ENDS */}
 
@@ -97,3 +95,4 @@ function Login() {
 }
 
 export default Login;
+

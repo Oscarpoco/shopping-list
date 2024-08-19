@@ -1,0 +1,50 @@
+{
+  "users": [
+    {
+      "id": "e65a",
+      "fullName": "Oscar Poco",
+      "email": "okpoco15@gmail.com",
+      "password": "Oscar@2000"
+    },
+    {
+      "id": "10c3",
+      "fullName": "Kyle Oscar Chauke",
+      "email": "kyle@gmail.com",
+      "password": "Kyle@2000"
+    }
+  ],
+  "items": [
+    {
+      "id": "c934",
+      "item": "Rice",
+      "description": "5kg",
+      "quantity": "2",
+      "category": "High",
+      "userId": "e65a"
+    },
+    {
+      "id": "dda5",
+      "item": "Meal",
+      "description": "10kg",
+      "quantity": "1",
+      "category": "High",
+      "userId": "e65a"
+    },
+    {
+      "id": "6ab8",
+      "item": "Rice",
+      "description": "5kg",
+      "quantity": "6",
+      "category": "grocery",
+      "userId": "10c3"
+    },
+    {
+      "id": "a371",
+      "item": "Brai Pack",
+      "description": "10kg",
+      "quantity": "9",
+      "category": "grocery",
+      "userId": "10c3"
+    }
+  ]
+}

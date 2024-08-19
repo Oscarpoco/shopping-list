@@ -109,5 +109,13 @@
 
 .login-form .close
 {
-    top: 40px;
+    top: 45px;
+}
+
+@media only screen and (max-width: 740px) 
+{
+    .login-form
+    {
+        width: 95%;
+    }  
 }

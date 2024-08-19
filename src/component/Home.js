@@ -163,6 +163,7 @@
 
 // CODE WITH REDUX
 import React from 'react';
+import { useState } from 'react';
 import './Home.css';
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa6";
@@ -192,6 +193,19 @@ function Home() {
   const confirmLogout = useSelector((state) => state.confirmLogout);
   const signInForm = useSelector((state) => state.signInForm);
   const signUpForm = useSelector((state) => state.signUpForm);
+  const [updateProfile, openUpdateProfile] = useState(true);
+
+
+  // HANDLES OPEN AND CLOSE UPDATE PROFILE
+  const handleOpenUpdateProfile = () => {
+    openUpdateProfile(true);
+    dispatch(OpenSignUpForm());
+  }
+
+  const handleCloseUpdateProfile = () => {
+    openUpdateProfile(false);
+  }
+  // ENDS
 
   return (
     <div className="">
@@ -234,7 +248,7 @@ function Home() {
               </div>
             </div>
             {isSignIn ? (
-              <button>
+              <button onClick={handleOpenUpdateProfile}>
                 My Profile <FaLongArrowAltRight className="arrow" />
               </button>
             ) : (
@@ -251,14 +265,14 @@ function Home() {
 
         {/* FOOTER */}
         <footer>
-        <div className=''>
+        <div className='company'>
           <p>&copy; 2024 Gamefusion (Pty) Ltd.</p>
         </div>
 
         {isSignIn && (
           <div className='shopping'> 
             <button>
-              <h3>Start Planning Your Next Shopping</h3>
+              <h3>Plan Your Next Shopping</h3>
               <div onClick={() => dispatch(showDashboard())} className='down-arrow'>
                 <FaAngleDown className='down'/>
               </div> 
@@ -298,7 +312,10 @@ function Home() {
 
 
       {/* SIGN IN FORM POPUP */}
-      {signInForm && <Login onClose={() => dispatch(closeSignInForm())} />}
+      {signInForm && <Login onClose={() => dispatch(closeSignInForm())} 
+                            onUpdateProfile={updateProfile} 
+                            handleCloseUpdateProfile={handleCloseUpdateProfile}
+      />}
       {/* SIGN IN FORM POPUP ENDS */}
 
       {/* SIGN UP FORM POPUP */}

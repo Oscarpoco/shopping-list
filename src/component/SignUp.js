@@ -1,45 +1,70 @@
-
-// CODE WITH REDUX
 import React, { useState } from 'react';
 import './Login.css';
-import { useDispatch } from 'react-redux';
-import { signIn, closeSignUpForm } from '../store';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerUser, closeSignUpForm, updateProfile } from '../store';
 
-function SignUp() {
+function SignUp({ signIn, onUpdateProfile, handleCloseUpdateProfile }) {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
+  const user = useSelector(state => state.user);
+  
+  const [email, setEmail] = useState(user?.email || '');
   const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState(user?.fullName || '');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-  // HANDLE LOGIN , STILL WITH DUMMY LOGIN UNTIL I UNDERSTAND ON HOW TO INCLUDE JSON-SERVER WITH REDUX
-  const handleLogin = (e) => {
+
+  // REGISTER NEW USER
+  const handleRegister = (e) => {
     e.preventDefault();
-    if (email === 'test@example.com' && password === 'password') {
-      dispatch(signIn());
-      dispatch(closeSignUpForm());
-    } else {
-      alert('Invalid credentials');
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
     }
+
+    const newUser = {
+      fullName,
+      email,
+      password,
+    };
+
+    dispatch(registerUser(newUser)).then(() => {
+      dispatch(closeSignUpForm());
+      // dispatch(signIn());
+    });
   };
+  // ENDS
+
+
+  // HANDLES UPDATE FOR PROFILE
+  const handleUpdateProfile = (e) => {
+    e.preventDefault();
+    const updatedUserData = {
+      fullName,
+      email,
+      password,
+    };
+    dispatch(updateProfile(user.id, updatedUserData));
+    handleCloseUpdateProfile();
+  };
+  // ENDS
 
   return (
     <div className="login">
-
       <div className="login-form">
-        <h2>Register</h2>
-        {/* FORM */}
-        <form onSubmit={handleLogin}>
+        <h2>{onUpdateProfile ? 'Update Profile' : 'Register'}</h2>
 
-            <div className="username">
-            <label>Full Names</label>
+        {/* FORM */}
+        <form onSubmit={onUpdateProfile ? handleUpdateProfile : handleRegister}>
+          <div className="username">
+            <label>Full Name</label>
             <input
               type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
               required
             />
-            </div>
-
-            <div className="username">
+          </div>
+          <div className="username">
             <label>Email</label>
             <input
               type="email"
@@ -47,8 +72,8 @@ function SignUp() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            </div>
-            <div className="password">
+          </div>
+          <div className="password">
             <label>Password</label>
             <input
               type="password"
@@ -56,21 +81,19 @@ function SignUp() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            </div>
-
-            <div className="password">
+          </div>
+          <div className="password">
             <label>Confirm Password</label>
             <input
               type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-            </div>
-          <button type="submit">Submit</button>
+          </div>
+          <button type="submit">{onUpdateProfile ? 'Update' : 'Submit'}</button>
         </form>
-        {/* FORM ENDS */}
-
+        {/* ENDS */}
         <button onClick={() => dispatch(closeSignUpForm())} className="close">
           +
         </button>
