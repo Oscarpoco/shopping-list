@@ -559,6 +559,7 @@ const UPDATE_PROFILE_FAILURE = 'UPDATE_PROFILE_FAILURE';
 const FETCH_ITEMS_SUCCESS = 'FETCH_ITEMS_SUCCESS';
 const ADD_ITEM_SUCCESS = 'ADD_ITEM_SUCCESS';
 const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
+const UPDATE_ITEM_SUCCESS = 'UPDATE_ITEM_SUCCESS';
 
 // ACTION CREATORS
 export const signIn = () => ({ type: SIGN_IN });
@@ -621,6 +622,12 @@ export const deleteItemSuccess = (itemId) => ({
 });
 // NOTIFICATIONS ENDS
 
+// ACTION CREATOR FOR EDIT
+export const updateItemSuccess = (item) => ({
+  type: UPDATE_ITEM_SUCCESS,
+  payload: item,
+});
+
 // ACTION ENDS
 
 // ASYNC ACTION CREATORS
@@ -641,6 +648,26 @@ export const registerUser = (userData) => {
     }
   };
 };
+
+// EDIT
+export const updateItem = (itemId, itemData) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`http://localhost:3003/items/${itemId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(itemData),
+      });
+      const item = await response.json();
+      dispatch(updateItemSuccess(item));
+    } catch (error) {
+      console.error('Failed to update item:', error);
+    }
+  };
+};
+
 // ENDS
 
 // LOGIN FUNCTION
@@ -782,6 +809,14 @@ const reducer = (state = initialState, action) => {
       return { ...state, items: [...state.items, action.payload] };
     case DELETE_ITEM_SUCCESS:
       return { ...state, items: state.items.filter(item => item.id !== action.payload) };
+    case UPDATE_ITEM_SUCCESS:
+      return {
+          ...state,
+          items: state.items.map((item) =>
+            item.id === action.payload.id ? action.payload : item
+          ),
+        };
+
     default:
       return state;
   }

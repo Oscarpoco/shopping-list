@@ -11,17 +11,21 @@
       "fullName": "Kyle Oscar Chauke",
       "email": "kyle@gmail.com",
       "password": "Kyle@2000"
+    },
+    {
+      "id": "b311",
+      "fullName": "TESTER",
+      "email": "TESTER@GAMIL.COM",
+      "password": "123456789"
+    },
+    {
+      "id": "1d99",
+      "fullName": "NIPHO",
+      "email": "okpoco15@gmail.com",
+      "password": "123"
     }
   ],
   "items": [
-    {
-      "id": "c934",
-      "item": "Rice",
-      "description": "5kg",
-      "quantity": "2",
-      "category": "High",
-      "userId": "e65a"
-    },
     {
       "id": "dda5",
       "item": "Meal",
@@ -45,6 +49,82 @@
       "quantity": "9",
       "category": "grocery",
       "userId": "10c3"
+    },
+    {
+      "id": "6405",
+      "item": "Sweets",
+      "description": "YUMMY",
+      "quantity": "3",
+      "category": "Sugar",
+      "userId": "b311"
+    },
+    {
+      "id": "46b1"
+    },
+    {
+      "id": "6c4d",
+      "item": "Brai Pack",
+      "description": "5kg",
+      "quantity": "2",
+      "category": "bathing",
+      "userId": "e65a"
+    },
+    {
+      "id": "46e4",
+      "item": "Sweets",
+      "description": "YUMMY",
+      "quantity": "5",
+      "category": "",
+      "Tag": "A",
+      "userId": "e65a"
+    },
+    {
+      "id": "7f5c",
+      "item": "Sweets",
+      "description": "YUMMY",
+      "quantity": "3",
+      "category": "Sugar",
+      "userId": "e65a"
+    },
+    {
+      "id": "a339",
+      "item": "",
+      "description": "",
+      "quantity": "",
+      "category": "",
+      "userId": "e65a"
+    },
+    {
+      "id": "11ca",
+      "item": "Huawei Pura 70",
+      "description": "Electronics",
+      "quantity": "1",
+      "category": "mobile phone",
+      "userId": "e65a"
+    },
+    {
+      "id": "e8ef",
+      "item": "Huawei Matebook xpro",
+      "description": "Electronics",
+      "quantity": "1",
+      "category": "laptop",
+      "userId": "e65a"
+    },
+    {
+      "id": "01f8",
+      "item": "WV Golf 7R",
+      "description": "Sports car",
+      "quantity": "1",
+      "category": "Car",
+      "userId": "e65a"
+    },
+    {
+      "id": "88ec",
+      "item": "Chocolate",
+      "description": "sweet",
+      "quantity": "2",
+      "category": "sugar",
+      "userId": "e65a"
     }
   ]
 }

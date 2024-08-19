@@ -301,6 +301,8 @@ import { MdOutlineAutoDelete } from 'react-icons/md';
 import { TbDeviceTabletSearch, TbLocationShare } from 'react-icons/tb';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideDashboard, showPopup, hidePopup, addItem, fetchItems, deleteItem } from '../store';
+import { updateItem } from '../store';
+
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -315,20 +317,27 @@ function Dashboard() {
     category: ''
   });
 
+  const [editItemId, setEditItemId] = useState(null);
+
+  // 
   useEffect(() => {
     if (user) {
       dispatch(fetchItems(user.id));
     }
   }, [user, dispatch]);
 
+  // CHANGE IN VALUES
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // HANDLES SUBMIT FOR EDITING
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (user) {
+    if (editItemId) {
+      dispatch(updateItem(editItemId, formData));
+    } else if (user) {
       dispatch(addItem(user.id, formData));
     }
     setFormData({
@@ -337,14 +346,26 @@ function Dashboard() {
       quantity: '',
       category: ''
     });
+    setEditItemId(null);
     dispatch(hidePopup());
   };
 
+  // HANDLES EDIT
   const handleEdit = (itemId) => {
-    // Handle edit functionality here
-    console.log('Edit item with ID:', itemId);
+    const item = items.find((item) => item.id === itemId);
+    if (item) {
+      setFormData({
+        item: item.item,
+        description: item.description,
+        quantity: item.quantity,
+        category: item.category
+      });
+      setEditItemId(itemId);
+      dispatch(showPopup());
+    }
   };
 
+  // HANDLE DELETE
   const handleDelete = (itemId) => {
     // Handle delete functionality
     if (user) {
@@ -352,10 +373,22 @@ function Dashboard() {
     }
   };
 
+  // HANDLES SHARE
   const handleShare = (itemId) => {
     // Handle share functionality here
     console.log('Share item with ID:', itemId);
   };
+
+  // SEARCH
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredItems = items.filter((item) =>
+    item.category && item.category.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="dashboard">
@@ -366,7 +399,12 @@ function Dashboard() {
         </div>
 
         <div className="search">
-          <input type="text" placeholder="Search by keyword" />
+          <input
+            type="text"
+            placeholder="Search by Tag"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
           <div className="search-box">
             <TbDeviceTabletSearch className="search-icon" />
           </div>
@@ -382,7 +420,7 @@ function Dashboard() {
           <p>No items to display</p>
         ) : (
           <ul>
-            {items.map((item) => (
+            {filteredItems.map((item) => (
               <li key={item.id}>
                 <h3>{item.item}</h3>
                 <p><strong><span>Description</span></strong>: {item.description}</p>
@@ -445,7 +483,7 @@ function Dashboard() {
               </div>
 
               <div className="category">
-                <label>Category</label>
+                <label>Tag</label>
                 <input
                   type="text"
                   name="category"
