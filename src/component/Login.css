@@ -1,0 +1,113 @@
+.login 
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+.login-form
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    width: 50%;
+    background: whitesmoke;
+    padding: 1em;
+    box-sizing: border-box;
+    z-index: 1;
+    border-radius: 20px;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, .1);
+}
+
+.login-form form
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5em;
+    padding: 2em;
+    padding-top: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.login-form form input
+{
+    padding: 1em 7em;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 0 5em rgba(0, 0, 0, .1);
+}
+
+.login-form form input:focus
+{
+    border: 2px solid green;
+    transition: all .5s ease-in-out;
+}
+
+.username
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: .5em;
+    box-sizing: border-box;
+}
+
+.password
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: .5em;
+    box-sizing: border-box;
+}
+
+.login-form form button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 2em;
+    box-sizing: border-box;
+    border: 2px solid whitesmoke;
+    background: whitesmoke;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 0 5em rgba(0, 0, 0, .1);
+}
+
+.login-form form button:hover
+{
+    border: 2px solid silver;
+    background: silver;
+    transition: all .5s ease-in-out;
+}
+
+.login-form form p
+{
+    color: blue;
+    cursor: pointer;
+}
+
+.login-form .close
+{
+    top: 40px;
+}

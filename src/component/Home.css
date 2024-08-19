@@ -1,0 +1,294 @@
+header
+{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 95vh;
+  /* background: rgba(189, 188, 188, 0.2); */
+  background: rgba(192, 192, 192, 0.3);
+  padding: 0 2em;
+  border: 4px solid;
+  border-image: linear-gradient(to right, green, rgba(0, 0, 0, 0), goldenrod) 1;
+  position: relative;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, .1);
+}
+
+nav
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+}
+
+.logo
+{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: .4em;
+}
+
+nav h3
+{
+  font-size: 1.2em;
+  color: green;
+}
+
+.trolley
+{
+  font-size: 1.9em;
+  color: black;
+}
+
+nav button
+{
+  padding: 0.9em 1.3em;
+  border: none;
+  background: green;
+  color: white;
+  /* font-weight: bold; */
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  z-index: 1;
+  cursor: pointer;
+  /* border: solid rgba(255, 255, 255, 0.1); */
+  box-shadow: -4px 0 8px rgba(0, 0, 0, .1);
+}
+
+nav button:hover
+{
+  background: silver;
+  color: black;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: all .5s ease-in-out;
+}
+
+header .cover
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+  position: relative;
+}
+
+.cover .left
+{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 1em;
+  justify-content: space-between;
+}
+
+.left h1
+{
+  color: green;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.social
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  /* background-color: #fff; */
+  padding: 1em 0;
+}
+
+.box
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .7);
+  cursor: pointer;
+}
+
+.box:hover
+{
+  background: silver;
+  color: black;
+  border-radius: 50%;
+  transition: all .5s ease-in-out;
+}
+
+.social-icon
+{
+  color: gold;
+  font-size: 1.7em;
+}
+
+.left button
+{
+  padding: 1.1em 1.1em;
+  width: 40%;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: none;
+  background: black;
+  color: gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  cursor: pointer;
+}
+
+.left button:hover
+{
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: none;
+  background: silver;
+  color: black;
+  cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+
+.arrow
+{
+  color: gold;
+  font-size: 1.5em;
+}
+
+.right
+{
+  width: 35%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(to right, rgba(0, 128, 0, 0.2), rgba(218, 165, 32, 0.3));
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  /* border: solid rgba(255, 255, 255, 0.1); */
+  box-shadow: -4px 0 8px rgba(0, 0, 0, .1);
+}
+
+.right img
+{
+  width: 100%;
+}
+
+footer
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: start;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1em 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 60%;
+}
+
+.shopping button
+{
+  align-self: center;
+  padding: 0.5em 1em;
+  background-color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  font-size: 1em;
+  border: none;
+  color: green;
+}
+
+.down-arrow
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: center;
+  border-radius: 50%;
+  padding: .5em;
+  color: black;
+  background: white;
+  box-shadow: 4px 0 8px rgba(0, 0, 0, .1);
+  cursor: pointer;
+}
+
+.down 
+{
+  font-size: 1.5em;
+}
+
+.down-arrow:hover
+{
+  background: silver;
+  color: black;
+  border-radius: 50%;
+  transition: all .5s ease-in-out;
+}
+
+
+/* POPUP */
+
+.confirm-layout
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .7);
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.confirm
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    width: 35%;
+    background: whitesmoke;
+    padding: 2em 3em;
+    box-sizing: border-box;
+    z-index: 1;
+    border-radius: 20px;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, .1);
+}
+
+.logout-button
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+    width: 100%;
+}
+
+.logout-button button
+{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: inherit;
+    border-radius: 10px;
+    border: none;
+    padding: 1.2em 1.8em;
+}

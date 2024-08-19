@@ -1,25 +1,77 @@
-import logo from './logo.svg';
+// import React from 'react';
+// import { useState } from 'react';
+// import './App.css';
+// import Home from './component/Home';
+// import Dashboard from './component/Dashboard';
+
+// function App() {
+
+//   const [isSignIn,setIsSignIn] = useState(true);
+//   const [showDashboard,setShowDashboard ] = useState(true);
+
+
+//   const handleSignIn = ()=>{
+//     setIsSignIn(true);
+//   }
+
+//   const handleLogout = ()=>{
+//     setIsSignIn(false);
+//   }
+
+//   const handleShowDashboard = ()=>{
+//     setShowDashboard(true);
+//   }
+
+//   const handleHideDashboard = ()=>{
+//     setShowDashboard(false);
+//   }
+
+//   return (
+//     <div className="App">
+//       <main>
+
+//       {showDashboard ? 
+      
+//       <Dashboard  
+//       handleHideDashboard = {handleHideDashboard}
+//       />: 
+      
+//       <Home 
+//       handleSignIn = {handleSignIn}
+//       isSignIn = {isSignIn}
+//       handleLogout = {handleLogout}
+//       handleShowDashboard = {handleShowDashboard}
+//       />
+//       }
+//       </main>
+      
+
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+// CODE WITH REDUX
+import React from 'react';
 import './App.css';
+import Home from './component/Home';
+import Dashboard from './component/Dashboard';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const showDashboard = useSelector((state) => state.showDashboard);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <main>
+        {showDashboard ? <Dashboard /> : <Home />}
+      </main>
     </div>
   );
 }
 
 export default App;
+

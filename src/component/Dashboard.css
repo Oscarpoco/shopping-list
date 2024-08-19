@@ -1,0 +1,300 @@
+.dashboard
+{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 95vh;
+  background: rgba(192, 192, 192, 0.3);
+  padding: 0 2em;
+  border: 4px solid;
+  border-image: linear-gradient(to right, green, rgba(0, 0, 0, 0), goldenrod) 1;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, .1);
+}
+
+
+/* NAVIGATION */
+.dashboard nav
+{
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background: rgba(0, 128, 0, 0.641); */
+    /* border: 3px solid;
+    border-image: linear-gradient(to right, green, rgba(0, 0, 0, 0), goldenrod) 1;
+    border-top: none; */
+}
+
+.back
+{
+    border-radius: 50%;
+    background: white;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.back:hover
+{
+    background: silver;
+    transition: all .5s ease-in-out;
+}
+
+.back-arrow
+{
+    font-size: 1.5em;
+    transform: rotate(90deg);
+}
+
+.search
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search input
+{
+    padding: 0 4em;
+    border: 2px solid black;
+    outline: none;
+    height: 3em;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.search input:focus
+{
+    border: 2px solid green;
+}
+
+.search .search-box
+{
+    padding: 0 .4em;
+    background-color: #fff;
+    border: 2px solid black;
+    border-left: none;
+    background: black;
+    height: 2.5em;
+    display: flex;
+    align-items: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.search .search-box .search-icon
+{
+    color: white;
+    font-size: 1.6em;
+}
+/* ENDS */
+
+/* MAIN */
+
+.dashboard main
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* ENDS */
+
+/* FOOTER */
+.dashboard footer
+{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 1em 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dashboard footer button
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: #fff;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, .1);
+    cursor: pointer;
+}
+
+.dashboard footer button:hover
+{
+    background: silver;
+    transition: all .5s ease-in-out;
+}
+
+.dashboard footer button span
+{
+    color: red;
+    font-size: 3em;
+    font-weight: bold;
+}
+/* ENDS */
+
+/* FORM */
+
+.add-form
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+.popup-content
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    width: 80%;
+    background: whitesmoke;
+    padding: 2em 3em;
+    box-sizing: border-box;
+    z-index: 1;
+    border-radius: 20px;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, .1);
+}
+
+.add-form form
+{
+    display: flex;
+    justify-content: space-between;
+    gap: .5em;
+    align-items: end;
+    width: 100%;
+}
+
+.add-form input
+{
+    outline: none;
+    border: 2px solid black;
+    padding: 1em;
+    border-radius: 10px;
+}
+
+.add-form label
+{
+    font-weight: bold;
+}
+
+.add-form input:focus
+{
+    border: 2px solid green;
+    transition:  all .5s ease-in-out;
+}
+
+.item
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .7em;
+}
+
+.description
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .7em;
+}
+
+.quantity
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .7em;
+    width: 10%;
+}
+
+.category
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .7em;
+}
+
+.form-button
+{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: .5em;
+}
+
+.form-button button
+{
+    padding: 1em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: inherit;
+    border-radius: 10px;
+}
+
+.form-button button:hover
+{
+   background: silver;
+   transition: all .5s ease-in-out;
+}
+
+.close
+{
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    font-size: 2em;
+    color: red;
+    transform: rotate(45deg);
+    border: 2px solid white;
+    background: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+}
+
+.close:hover
+{
+    background: silver;
+    border-radius: 50%;
+    transition: all .5s ease-in-out;
+    border: 2px solid silver;
+}
+/* ENDS */
+
