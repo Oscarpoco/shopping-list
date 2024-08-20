@@ -27,47 +27,12 @@
   ],
   "items": [
     {
-      "id": "dda5",
-      "item": "Meal",
-      "description": "10kg",
-      "quantity": "1",
-      "category": "High",
-      "userId": "e65a"
-    },
-    {
-      "id": "6ab8",
-      "item": "Rice",
-      "description": "5kg",
-      "quantity": "6",
-      "category": "grocery",
-      "userId": "10c3"
-    },
-    {
       "id": "a371",
       "item": "Brai Pack",
       "description": "10kg",
       "quantity": "9",
       "category": "grocery",
       "userId": "10c3"
-    },
-    {
-      "id": "6405",
-      "item": "Sweets",
-      "description": "YUMMY",
-      "quantity": "3",
-      "category": "Sugar",
-      "userId": "b311"
-    },
-    {
-      "id": "46b1"
-    },
-    {
-      "id": "6c4d",
-      "item": "Brai Pack",
-      "description": "5kg",
-      "quantity": "2",
-      "category": "bathing",
-      "userId": "e65a"
     },
     {
       "id": "46e4",
@@ -79,35 +44,11 @@
       "userId": "e65a"
     },
     {
-      "id": "7f5c",
-      "item": "Sweets",
-      "description": "YUMMY",
-      "quantity": "3",
-      "category": "Sugar",
-      "userId": "e65a"
-    },
-    {
       "id": "a339",
       "item": "",
       "description": "",
       "quantity": "",
       "category": "",
-      "userId": "e65a"
-    },
-    {
-      "id": "11ca",
-      "item": "Huawei Pura 70",
-      "description": "Electronics",
-      "quantity": "1",
-      "category": "mobile phone",
-      "userId": "e65a"
-    },
-    {
-      "id": "e8ef",
-      "item": "Huawei Matebook xpro",
-      "description": "Electronics",
-      "quantity": "1",
-      "category": "laptop",
       "userId": "e65a"
     },
     {
@@ -119,11 +60,11 @@
       "userId": "e65a"
     },
     {
-      "id": "88ec",
-      "item": "Chocolate",
-      "description": "sweet",
-      "quantity": "2",
-      "category": "sugar",
+      "id": "8c11",
+      "item": "Huawei Matebook xpro",
+      "description": "Electronics",
+      "quantity": "1",
+      "category": "Laptop",
       "userId": "e65a"
     }
   ]

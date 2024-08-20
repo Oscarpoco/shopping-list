@@ -266,6 +266,10 @@
 
 // export { store, persistor };
 
+
+
+
+// DRAFT
 // import { createStore, applyMiddleware } from 'redux';
 // import { persistStore, persistReducer } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
@@ -516,7 +520,7 @@
 
 // export { store, persistor };
 
-
+// FINAL PROJECT CODE
 import { createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -530,6 +534,7 @@ const initialState = {
   confirmLogout: false,
   signInForm: false,
   signUpForm: false,
+  userProfile: {},
   users: [],
   user: null,
   error: null,
@@ -575,12 +580,12 @@ export const closeSignInForm = () => ({ type: CLOSE_SIGN_IN_FORM });
 export const OpenSignUpForm = () => ({ type: OPEN_SIGN_UP_FORM });
 export const closeSignUpForm = () => ({ type: CLOSE_SIGN_UP_FORM });
 
+// NOTIFICATIONS
 export const registerUserSuccess = (user) => ({
   type: REGISTER_USER_SUCCESS,
   payload: user,
 });
 
-// NOTIFICATIONS
 export const registerUserFailure = (error) => ({
   type: REGISTER_USER_FAILURE,
   payload: error,
@@ -596,12 +601,12 @@ export const loginUserFailure = (error) => ({
   payload: error,
 });
 
-export const updateProfileSuccess = (user) => ({
+export const updateProfileSuccess  = (user) => ({
   type: UPDATE_PROFILE_SUCCESS,
   payload: user,
 });
 
-export const updateProfileFailure = (error) => ({
+export const updateProfileFailure  = (error) => ({
   type: UPDATE_PROFILE_FAILURE,
   payload: error,
 });
@@ -630,7 +635,7 @@ export const updateItemSuccess = (item) => ({
 
 // ACTION ENDS
 
-// ASYNC ACTION CREATORS
+// ASYNC ACTION CREATORS FOR NEW USERS
 export const registerUser = (userData) => {
   return async (dispatch) => {
     try {
@@ -648,9 +653,10 @@ export const registerUser = (userData) => {
     }
   };
 };
+// ENDS
 
 // EDIT
-export const updateItem = (itemId, itemData) => {
+export const updateItem = (itemId, itemData, userId) => {
   return async (dispatch) => {
     try {
       const response = await fetch(`http://localhost:3003/items/${itemId}`, {
@@ -658,7 +664,7 @@ export const updateItem = (itemId, itemData) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(itemData),
+        body: JSON.stringify({ ...itemData, userId }),
       });
       const item = await response.json();
       dispatch(updateItemSuccess(item));
@@ -667,6 +673,7 @@ export const updateItem = (itemId, itemData) => {
     }
   };
 };
+
 
 // ENDS
 
@@ -696,10 +703,10 @@ export const loginUser = (email, password) => {
 // ENDS
 
 // UPDATE USER DETAIL
-export const updateProfile = (userId, profileData) => {
+export const updateProfile = (id, profileData) => {
   return async (dispatch) => {
     try {
-      const response = await fetch(`http://localhost:3003/users/${userId}`, {
+      const response = await fetch(`http://localhost:3003/users/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -799,10 +806,16 @@ const reducer = (state = initialState, action) => {
       return { ...state, user: action.payload };
     case LOGIN_USER_FAILURE:
       return { ...state, error: action.payload };
-    case UPDATE_PROFILE_SUCCESS:
-      return { ...state, user: { ...state.user, ...action.payload } };
-    case UPDATE_PROFILE_FAILURE:
-      return { ...state, error: action.payload };
+      case 'UPDATE_PROFILE_SUCCESS':
+        return {
+          ...state,
+          userProfile: action.payload,
+        };
+        case 'UPDATE_PROFILE_FAILURE':
+          return {
+            ...state,
+            error: action.payload,
+          };
     case FETCH_ITEMS_SUCCESS:
       return { ...state, items: action.payload };
     case ADD_ITEM_SUCCESS:

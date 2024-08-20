@@ -186,6 +186,7 @@ import {
 } from '../store';
 import Login from './Login';
 import SignUp from './SignUp';
+import UpdateProfile from './UpdateProfile';
 
 function Home() {
   const dispatch = useDispatch();
@@ -193,17 +194,16 @@ function Home() {
   const confirmLogout = useSelector((state) => state.confirmLogout);
   const signInForm = useSelector((state) => state.signInForm);
   const signUpForm = useSelector((state) => state.signUpForm);
-  const [updateProfile, openUpdateProfile] = useState(true);
 
+  // HANDLES OPENING EDIT FORM
+  const [update, setUpdate] = useState(false);
 
-  // HANDLES OPEN AND CLOSE UPDATE PROFILE
-  const handleOpenUpdateProfile = () => {
-    openUpdateProfile(true);
-    dispatch(OpenSignUpForm());
+  const onOpenUpdate = () =>{
+    setUpdate(true);
   }
 
-  const handleCloseUpdateProfile = () => {
-    openUpdateProfile(false);
+  const onCloseUpdate = () => {
+    setUpdate(false);
   }
   // ENDS
 
@@ -248,7 +248,7 @@ function Home() {
               </div>
             </div>
             {isSignIn ? (
-              <button onClick={handleOpenUpdateProfile}>
+              <button onClick={onOpenUpdate}>
                 My Profile <FaLongArrowAltRight className="arrow" />
               </button>
             ) : (
@@ -258,7 +258,7 @@ function Home() {
             )}
           </div>
           <div className="right">
-            <img src="/logo.png" alt="trolley" />
+            <img src="/trolley.jpeg" alt="trolley" />
           </div>
         </div>
         {/* COVER ENDS */}
@@ -312,15 +312,16 @@ function Home() {
 
 
       {/* SIGN IN FORM POPUP */}
-      {signInForm && <Login onClose={() => dispatch(closeSignInForm())} 
-                            onUpdateProfile={updateProfile} 
-                            handleCloseUpdateProfile={handleCloseUpdateProfile}
-      />}
+      {signInForm && <Login onClose={() => dispatch(closeSignInForm())} />}
       {/* SIGN IN FORM POPUP ENDS */}
 
       {/* SIGN UP FORM POPUP */}
       {signUpForm && <SignUp onClose={() => dispatch(closeSignInForm())}/>}
       {/* SIGN UP FORM POPUP ENDS */}
+
+      {/* UPDATE PROFILE */}
+      {update && (<UpdateProfile onCloseUpdate={onCloseUpdate}/>)}
+      {/* UPDATE PROFILE ENDS */}
 
     </div>
   );

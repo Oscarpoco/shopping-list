@@ -314,7 +314,7 @@ function Dashboard() {
     item: '',
     description: '',
     quantity: '',
-    category: ''
+    category: '',
   });
 
   const [editItemId, setEditItemId] = useState(null);
@@ -336,7 +336,7 @@ function Dashboard() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (editItemId) {
-      dispatch(updateItem(editItemId, formData));
+      dispatch(updateItem(editItemId, formData, user.id));
     } else if (user) {
       dispatch(addItem(user.id, formData));
     }
@@ -344,26 +344,29 @@ function Dashboard() {
       item: '',
       description: '',
       quantity: '',
-      category: ''
+      category: '',
+      userId: user.id
     });
     setEditItemId(null);
     dispatch(hidePopup());
   };
 
-  // HANDLES EDIT
-  const handleEdit = (itemId) => {
-    const item = items.find((item) => item.id === itemId);
-    if (item) {
-      setFormData({
-        item: item.item,
-        description: item.description,
-        quantity: item.quantity,
-        category: item.category
-      });
-      setEditItemId(itemId);
-      dispatch(showPopup());
-    }
-  };
+ // HANDLES EDIT
+const handleEdit = (itemId, userId) => {
+  const item = items.find((item) => item.id === itemId);
+  if (item) {
+    setFormData({
+      item: item.item,
+      description: item.description,
+      quantity: item.quantity,
+      category: item.category,
+      userId: userId  // Ensures userId is included in the form data
+    });
+    setEditItemId(itemId);
+    dispatch(showPopup());
+  }
+};
+
 
   // HANDLE DELETE
   const handleDelete = (itemId) => {
@@ -375,9 +378,25 @@ function Dashboard() {
 
   // HANDLES SHARE
   const handleShare = (itemId) => {
-    // Handle share functionality here
+    const shareUrl = `${window.location.origin}/item/${itemId}`; // Construct the URL
+
+    if (navigator.share) {
+      // If the Web Share API is supported
+      navigator.share({
+        title: 'Check out this item!',
+        url: shareUrl,
+      })
+      .then(() => console.log('Successfully shared'))
+      .catch((error) => console.error('Error sharing:', error));
+    } else {
+      // Fallback: Copy the URL to the clipboard
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        alert('Link copied to clipboard!');
+      }).catch((error) => console.error('Error copying link:', error));
+    }
     console.log('Share item with ID:', itemId);
   };
+
 
   // SEARCH
   const [searchTerm, setSearchTerm] = useState('');
@@ -408,9 +427,15 @@ function Dashboard() {
           <div className="search-box">
             <TbDeviceTabletSearch className="search-icon" />
           </div>
+          <div className="sort">
+         <p>A-Z</p>
+          </div>
+
+          <div className="sort">
+            <p>Z-A</p>
+          </div>
         </div>
 
-        <div className="cart"></div>
       </nav>
       {/* NAVIGATION ENDS */}
 
@@ -420,12 +445,33 @@ function Dashboard() {
           <p>No items to display</p>
         ) : (
           <ul>
+            <div className='Navigation'>
+              <div className='item-header'><strong><h4>Item</h4></strong></div>
+              <div className='item-header'><strong><h4>Description</h4></strong></div>
+              <div className='item-header'><strong><h4>Quantity</h4></strong></div>
+              <div className='item-header'>
+                <strong><h4>Tag</h4></strong>
+                </div>
+              <div className='item-button-box'><strong><h4>Actions</h4></strong></div>
+            </div>
             {filteredItems.map((item) => (
               <li key={item.id}>
-                <h3>{item.item}</h3>
-                <p><strong><span>Description</span></strong>: {item.description}</p>
-                <p><strong><span>Quantity</span></strong>: {item.quantity}</p>
-                <p><strong><span>Tag</span> </strong>: {item.category}</p>
+                <div className="item-box">
+                  <h3>{item.item}</h3>
+                </div>
+                
+                <div className="item-box">
+                  <p>{item.description}</p>
+                </div>
+
+                <div className="item-box">
+                  <p>{item.quantity}</p>
+                </div>
+
+                <div className="item-box">
+                  <p>{item.category}</p>
+                </div>
+                
                 <div className="item-button">
                   <button onClick={() => handleEdit(item.id)}><CiEdit style={{ color: 'blue' }} /></button>
                   <button onClick={() => handleDelete(item.id)}><MdOutlineAutoDelete style={{ color: 'red' }} /></button>

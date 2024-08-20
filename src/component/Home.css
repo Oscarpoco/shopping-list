@@ -177,7 +177,7 @@ header .cover
   position: absolute;
   top: 0;
   right: 0;
-  background: linear-gradient(to right, rgba(0, 128, 0, 0.2), rgba(218, 165, 32, 0.3));
+  background: linear-gradient(to right, rgba(0, 128, 0, 0.6), rgba(218, 165, 32, 0.6));
   border-top-right-radius: 100px;
   border-bottom-left-radius: 100px;
   /* border: solid rgba(255, 255, 255, 0.1); */
@@ -218,7 +218,12 @@ footer
   gap: 1em;
   font-size: 1em;
   border: none;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  background: white;
   color: green;
+  box-shadow: 4px 0 8px rgba(0, 0, 0, .1);
+  border-left: 3px solid green;
 }
 
 .down-arrow
@@ -229,9 +234,8 @@ footer
   align-self: center;
   border-radius: 50%;
   padding: .5em;
-  color: black;
-  background: white;
-  box-shadow: 4px 0 8px rgba(0, 0, 0, .1);
+  color: gold;
+  background: black;
   cursor: pointer;
 }
 
