@@ -11,7 +11,7 @@ body
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  background: rgba(255, 255, 255, 0.3); 
+  background: rgba(255, 255, 255, 0.6); 
   box-sizing: border-box;
   width: 100%;
   height: 100vh;
@@ -21,16 +21,15 @@ body
 
 .App::before {
   content: '';
-  background: url('/public/download.jpeg'); /* Make sure the path is correct */
+  background: url('/public/download.jpeg'); 
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.3; /* Adjust opacity if needed */
-  z-index: -1; /* Ensures the image is behind other content */
+  opacity: 0.3; 
+  z-index: -1; 
 }
-
 main
 {
   width: 100%;

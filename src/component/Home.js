@@ -163,7 +163,7 @@
 
 // CODE WITH REDUX
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Home.css';
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa6";
@@ -187,6 +187,7 @@ import {
 import Login from './Login';
 import SignUp from './SignUp';
 import UpdateProfile from './UpdateProfile';
+import Loader from './Loader';
 
 function Home() {
   const dispatch = useDispatch();
@@ -195,15 +196,36 @@ function Home() {
   const signInForm = useSelector((state) => state.signInForm);
   const signUpForm = useSelector((state) => state.signUpForm);
 
+  // LOADER
+  const [loading, setLoading] = useState(true);
+
   // HANDLES OPENING EDIT FORM
   const [update, setUpdate] = useState(false);
 
-  const onOpenUpdate = () =>{
-    setUpdate(true);
-  }
+  const onOpenUpdate = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setUpdate(true);
+      setLoading(false);
+    }, 2000);
+  };
 
   const onCloseUpdate = () => {
     setUpdate(false);
+  };
+
+  // Effect to simulate initial loading
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Simulate loading for 2 seconds
+  }, []);
+  
+  // ENDS
+
+  // LOADER
+  if(loading){
+    return <Loader />
   }
   // ENDS
 

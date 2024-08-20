@@ -372,3 +372,43 @@ footer
 }
   
 }
+
+@media only screen and (max-width: 1920px) 
+{
+  .left h1
+  {
+    color: green;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 4em;
+  }
+
+  .social
+{
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+  /* background-color: #fff; */
+  padding: 1em 0;
+  box-sizing: border-box;
+}
+
+.left button
+{
+  padding: 1.1em 1.1em;
+  width: 20%;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: none;
+  background: black;
+  color: gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  cursor: pointer;
+}
+  
+}
+

@@ -396,6 +396,7 @@ const handleEdit = (itemId, userId) => {
     }
     console.log('Share item with ID:', itemId);
   };
+  // ENDS
 
 
   // SEARCH
@@ -405,9 +406,32 @@ const handleEdit = (itemId, userId) => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredItems = items.filter((item) =>
+  // SEARCH ENDS
+
+  // SORTING ITEMS
+  const [sortOrder, setSortOrder] = useState('asc');
+
+  const handleSortAsc = () => {
+    setSortOrder('asc');
+  };
+
+  const handleSortDesc = () => {
+    setSortOrder('desc');
+  };
+
+  const sortedItems = items.sort((a, b) => {
+    if (sortOrder === 'asc') {
+      return a.item.localeCompare(b.item);
+    } else if (sortOrder === 'desc') {
+      return b.item.localeCompare(a.item);
+    }
+    return 0;
+  });
+
+  const filteredItems = sortedItems.filter((item) =>
     item.category && item.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  //SORTING ITEMS ENDS
 
   return (
     <div className="dashboard">
@@ -427,11 +451,11 @@ const handleEdit = (itemId, userId) => {
           <div className="search-box">
             <TbDeviceTabletSearch className="search-icon" />
           </div>
-          <div className="sort">
+          <div onClick={handleSortAsc} className="sort">
          <p>A-Z</p>
           </div>
 
-          <div className="sort">
+          <div onClick={handleSortDesc} className="sort">
             <p>Z-A</p>
           </div>
         </div>

@@ -40,21 +40,27 @@ import React, { useState } from 'react';
 import './Login.css';
 import { useDispatch } from 'react-redux';
 import { loginUser, closeSignInForm } from '../store';
+// import Loader from './Loader';
 
 function Login() {
 
   const dispatch = useDispatch();
+  // const loading = useSelector((state) => state.loading);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
 
-  // HANDLE LOGIN
-  const handleLogin = (e) => {
-    e.preventDefault();
-    dispatch(loginUser(email, password));
-    dispatch(closeSignInForm());
-  };
-  // ENDS
+ // HANDLE LOGIN
+ const handleLogin = async (e) => {
+  e.preventDefault();
+  await dispatch(loginUser(email, password));
+  dispatch(closeSignInForm());
+};
+// ENDS
+
+  // if (loading) {
+  //   return <Loader />; // Show loader if loading
+  // }
 
   return (
     <div className="login">

@@ -565,6 +565,7 @@ const FETCH_ITEMS_SUCCESS = 'FETCH_ITEMS_SUCCESS';
 const ADD_ITEM_SUCCESS = 'ADD_ITEM_SUCCESS';
 const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
 const UPDATE_ITEM_SUCCESS = 'UPDATE_ITEM_SUCCESS';
+const SET_LOADING = 'SET_LOADING';
 
 // ACTION CREATORS
 export const signIn = () => ({ type: SIGN_IN });
@@ -579,6 +580,10 @@ export const openSignInForm = () => ({ type: OPEN_SIGN_IN_FORM });
 export const closeSignInForm = () => ({ type: CLOSE_SIGN_IN_FORM });
 export const OpenSignUpForm = () => ({ type: OPEN_SIGN_UP_FORM });
 export const closeSignUpForm = () => ({ type: CLOSE_SIGN_UP_FORM });
+export const setLoading = (isLoading) => ({
+  type: SET_LOADING,
+  payload: isLoading,
+});
 
 // NOTIFICATIONS
 export const registerUserSuccess = (user) => ({
@@ -680,6 +685,8 @@ export const updateItem = (itemId, itemData, userId) => {
 // LOGIN FUNCTION
 export const loginUser = (email, password) => {
   return async (dispatch) => {
+    dispatch(setLoading(true)); // Start loading
+
     try {
       const response = await fetch('http://localhost:3003/users');
       const users = await response.json();
@@ -697,6 +704,8 @@ export const loginUser = (email, password) => {
     } catch (error) {
       dispatch(loginUserFailure(error.message));
       alert('Error logging in');
+    } finally {
+      dispatch(setLoading(false)); // End loading
     }
   };
 };
@@ -774,18 +783,29 @@ export const deleteItem = (itemId) => {
 // REDUCER
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+
+    // SIGN IN AND SIGN OUT
     case SIGN_IN:
       return { ...state, isSignIn: true };
     case SIGN_OUT:
       return { ...state, isSignIn: false, user: null };
+      // ENDS
+
+      // SHOWING DASHBOARD
     case SHOW_DASHBOARD:
       return { ...state, showDashboard: true };
     case HIDE_DASHBOARD:
+      // ENDS
+
+      // SHOWING AND HIDING POPUPS
       return { ...state, showDashboard: false };
     case SHOW_POPUP:
       return { ...state, showPopup: true };
     case HIDE_POPUP:
       return { ...state, showPopup: false };
+      // ENDS
+
+      // CASES FOR HANDLING LOGOUT, LOG IN NOTIFICATIONS AND THEIR FORMS
     case OPEN_LOGOUT_TRAY:
       return { ...state, confirmLogout: true };
     case CLOSE_LOGOUT_TRAY:
@@ -806,6 +826,9 @@ const reducer = (state = initialState, action) => {
       return { ...state, user: action.payload };
     case LOGIN_USER_FAILURE:
       return { ...state, error: action.payload };
+        // ENDS
+
+      // CASES FOR UPDATE PROFILE NOTIFICATIONS
       case 'UPDATE_PROFILE_SUCCESS':
         return {
           ...state,
@@ -816,10 +839,16 @@ const reducer = (state = initialState, action) => {
             ...state,
             error: action.payload,
           };
+          // ENDS
+
+           // CASE FOR FETCHING AND ADDING NOTIFICATION
     case FETCH_ITEMS_SUCCESS:
       return { ...state, items: action.payload };
     case ADD_ITEM_SUCCESS:
       return { ...state, items: [...state.items, action.payload] };
+          // ENDS
+
+      // CASE FOR DELETING NOTIFICATION
     case DELETE_ITEM_SUCCESS:
       return { ...state, items: state.items.filter(item => item.id !== action.payload) };
     case UPDATE_ITEM_SUCCESS:
@@ -829,7 +858,15 @@ const reducer = (state = initialState, action) => {
             item.id === action.payload.id ? action.payload : item
           ),
         };
+        // ENDS
 
+        // CASES FOR HANDLING LOADING , BUT IT SEEMS NOT TO WORKING ON SOME COMPONENTS
+    case SET_LOADING:
+      return { ...state, loading: action.payload };
+    case SIGN_IN:
+      return { ...state, isSignIn: true };
+      // ENDS
+      
     default:
       return state;
   }
