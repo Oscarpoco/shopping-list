@@ -180,7 +180,7 @@ header .cover
   position: absolute;
   top: 0;
   right: 0;
-  background: linear-gradient(to right, rgba(0, 128, 0, 0.4), rgba(218, 165, 32, 0.5));
+  background: linear-gradient(to right, rgba(0, 128, 0, 0.2), rgba(218, 165, 32, 0.3));
   border-top-right-radius: 100px;
   border-bottom-left-radius: 100px;
   /* border: solid rgba(255, 255, 255, 0.1); */
@@ -253,6 +253,20 @@ footer
   color: black;
   border-radius: 50%;
   transition: all .5s ease-in-out;
+}
+
+.company
+{
+  display: flex;
+  gap: .5em;
+  font-size: .9em;
+}
+
+.company span
+{
+  color: blue;
+  font-size: .7em;
+  cursor: pointer;
 }
 /* FOOTER ENDS */
 

@@ -38,9 +38,10 @@
 // CODE WITH REDUX
 import React, { useState } from 'react';
 import './Login.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { loginUser, closeSignInForm } from '../store';
 // import Loader from './Loader';
+import {OpenSignUpForm} from '../store';
 
 function Login() {
 
@@ -88,7 +89,13 @@ function Login() {
             />
           </div>
           <button type="submit">Submit</button>
-          <p>Don't have an Account? Register here.</p>
+          <p onClick={() => {
+          dispatch(OpenSignUpForm());
+          dispatch(closeSignInForm());
+          }}>
+          Don't have an Account? Register here.
+          </p>
+
         </form>
         {/* FORM ENDS */}
 

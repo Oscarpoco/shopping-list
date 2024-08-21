@@ -156,6 +156,7 @@ function SignUp({ onUpdateProfile, handleCloseUpdateProfile }) {
             />
           </div>
           <button type="submit">{onUpdateProfile ? 'Update' : 'Submit'}</button>
+          <p>Privacy & </p>
         </form>
         {/* ENDS */}
         <button onClick={() => dispatch(closeSignUpForm())} className="close">

@@ -200,6 +200,10 @@ function Home() {
   const [loading, setLoading] = useState(true);
   // ENDS
 
+  // TERMS
+  const [terms, setTerms] = useState(false);
+  // ENDS
+
   // HANDLES OPENING EDIT FORM
   const [update, setUpdate] = useState(false);
   // ENDS
@@ -232,6 +236,18 @@ function Home() {
   if(loading){
     return <Loader />
   }
+  // ENDS
+
+  // HANDLES TERMS AND CONDITIONS
+  const handleOpenTerms = () =>{
+    setTerms(true);
+  }
+
+  const handleCloseTerms = () =>{
+    setTerms(false);
+  }
+  
+
   // ENDS
 
 
@@ -305,7 +321,8 @@ function Home() {
         {/* FOOTER */}
         <footer>
         <div className='company'>
-          <p>&copy; 2024 Gamefusion (Pty) Ltd.</p>
+          <p>&copy; 2024 Gamefusion (Pty) Ltd. </p>
+          <p onClick={handleOpenTerms} className='terms'>|  <span>Terms & Conditions</span></p>
         </div>
 
         {isSignIn && (
