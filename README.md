@@ -1,3 +1,6 @@
+![SHOPPING LIST](https://github.com/user-attachments/assets/1602df5f-7746-4d86-9a08-1481f89431c0)
+
+
 #Shopping List Application
 
 Overview
