@@ -34,27 +34,31 @@ function UpdateProfile({ onCloseUpdate }) {
       return;
     }
 
+    // CHECKS IF PASSWORD IS EQUAL TO CONFIRM PASSWORD
     if (password !== confirmPassword) {
       alert('Passwords do not match');
       return;
     }
 
+
+    // Hanldes updating the details
     const updatedUserData = {
       fullName,
       email,
-      password: password || undefined, // Only update password if provided
+      password: password || undefined, 
     };
 
     dispatch(updateProfile(user.id, updatedUserData))
       .then(() => {
         alert('Profile updated successfully');
-        onCloseUpdate(); // Close the update form after successful update
+        onCloseUpdate(); // CLOSE THE UPDATE FORM
       })
       .catch((error) => {
         console.error('Error updating profile:', error);
         alert('Failed to update profile');
       });
   };
+  // ENDS
 
   return (
     <div className="login">
@@ -63,6 +67,8 @@ function UpdateProfile({ onCloseUpdate }) {
 
         {/* FORM */}
         <form onSubmit={handleUpdateProfile} style={{padding: '1em 2em'}}>
+
+          {/* FULLNAMES */}
           <div className="username">
             <label>Full Name</label>
             <input
@@ -72,7 +78,9 @@ function UpdateProfile({ onCloseUpdate }) {
               required
             />
           </div>
+          {/* ENDS */}
 
+          {/* USERNAME */}
           <div className="username">
             <label>Email</label>
             <input
@@ -82,6 +90,7 @@ function UpdateProfile({ onCloseUpdate }) {
               required
             />
           </div>
+          {/* ENDS */}
 
           {/* OLD PASSWORD */}
           <div className="password">
@@ -90,10 +99,13 @@ function UpdateProfile({ onCloseUpdate }) {
               type="password"
               value={oldPassword}
               onChange={(e) => setOldPassword(e.target.value)}
+              autocomplete="off"
               required
             />
           </div>
+          {/* ENDS */}
 
+          {/* NEW PASSWORD */}
           <div className="password">
             <label>New Password</label>
             <input
@@ -109,6 +121,8 @@ function UpdateProfile({ onCloseUpdate }) {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
+            {/* ENDS */}
+
           </div>
           <button type="submit">Update</button>
         </form>

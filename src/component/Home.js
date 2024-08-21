@@ -184,10 +184,14 @@ import {
   OpenSignUpForm,
 
 } from '../store';
+
+// COMPONENTS
 import Login from './Login';
 import SignUp from './SignUp';
 import UpdateProfile from './UpdateProfile';
 import Loader from './Loader';
+import TermsAndConditions from './TermsAndConditions';
+// ENDS
 
 function Home() {
   const dispatch = useDispatch();
@@ -246,8 +250,6 @@ function Home() {
   const handleCloseTerms = () =>{
     setTerms(false);
   }
-  
-
   // ENDS
 
 
@@ -270,7 +272,7 @@ function Home() {
         </nav>
         {/* NAVIGATION ENDS*/}
 
-        {/* COVER */}
+        {/* COVER  , THIS CONTAINER CONTAINS MY CONTENT ONHOME PAGE*/}
         <div className="cover">
           <div className="left">
             <h1>Organize, Manage, Shop <br />Simplify Your Life!</h1>
@@ -335,6 +337,12 @@ function Home() {
             </button>
           </div>
         )}
+
+        {/* TERMS & CONDITIONS */}
+        {terms && (
+          <TermsAndConditions handleCloseTerms={handleCloseTerms}/>
+        )}
+        {/* TERMS ENDS */}
           
         </footer>
         {/* FOOTER ENDS */}

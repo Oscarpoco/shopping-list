@@ -1,34 +1,11 @@
 {
   "users": [
     {
-      "id": "ac2d",
+      "id": "e44a",
       "fullName": "oscar",
-      "email": "testing@gmail.com",
+      "email": "user@gmail.com",
       "password": "Oscar@2000"
-    },
-    {
-      "id": "abaa",
-      "fullName": "kyle",
-      "email": "tester@gmail.com",
-      "password": "Poco@2000"
     }
   ],
-  "items": [
-    {
-      "id": "26b4",
-      "item": "Huawei Matebook xpro",
-      "description": "10kg",
-      "quantity": "1",
-      "category": "1",
-      "userId": "abaa"
-    },
-    {
-      "id": "f103",
-      "item": "Meal",
-      "description": "10kg",
-      "quantity": "1",
-      "category": "Grocery",
-      "userId": "abaa"
-    }
-  ]
+  "items": []
 }
