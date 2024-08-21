@@ -92,22 +92,23 @@ header .cover
   gap: 1em;
   justify-content: space-between;
   box-sizing: border-box;
+  width: 50%;
 }
 
 .left h1
 {
   color: green;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2.5em;
 }
 
 .social
 {
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1em;
-  /* background-color: #fff; */
+  gap: .5em;
   padding: 1em 0;
   box-sizing: border-box;
 }
@@ -117,7 +118,9 @@ header .cover
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1em;
+  padding: .5em;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: rgba(0, 0, 0, .7);
   cursor: pointer;
@@ -140,7 +143,7 @@ header .cover
 .left button
 {
   padding: 1.1em 1.1em;
-  width: 40%;
+  width: 30%;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 20px;
   border: none;
@@ -177,7 +180,7 @@ header .cover
   position: absolute;
   top: 0;
   right: 0;
-  background: linear-gradient(to right, rgba(0, 128, 0, 0.6), rgba(218, 165, 32, 0.6));
+  background: linear-gradient(to right, rgba(0, 128, 0, 0.4), rgba(218, 165, 32, 0.5));
   border-top-right-radius: 100px;
   border-bottom-left-radius: 100px;
   /* border: solid rgba(255, 255, 255, 0.1); */
@@ -325,6 +328,19 @@ footer
   {
   justify-content: center;
   align-items: center;
+  width: 100%;
+  }
+
+  .box
+  {
+    width: 40px;
+    height: 40px;
+  }
+
+  .left button 
+  {
+    width: 40%;
+    align-self: flex-start;
   }
 
   .social-icon
@@ -339,6 +355,7 @@ footer
   flex-direction: column;
   gap: 1em;
   justify-content: space-between;
+  align-items: center;
   box-sizing: border-box;
   width: 100%;
 }
@@ -369,45 +386,6 @@ footer
 .confirm
 {
     width: 90%;
-}
-  
-}
-
-@media only screen and (max-width: 1920px) 
-{
-  .left h1
-  {
-    color: green;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 4em;
-  }
-
-  .social
-{
-  width: 60%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1em;
-  /* background-color: #fff; */
-  padding: 1em 0;
-  box-sizing: border-box;
-}
-
-.left button
-{
-  padding: 1.1em 1.1em;
-  width: 20%;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border: none;
-  background: black;
-  color: gold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1em;
-  cursor: pointer;
 }
   
 }

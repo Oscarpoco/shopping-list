@@ -198,10 +198,13 @@ function Home() {
 
   // LOADER
   const [loading, setLoading] = useState(true);
+  // ENDS
 
   // HANDLES OPENING EDIT FORM
   const [update, setUpdate] = useState(false);
+  // ENDS
 
+  // HANDLES UPDATE FORM
   const onOpenUpdate = () => {
     setLoading(true);
     setTimeout(() => {
@@ -213,6 +216,8 @@ function Home() {
   const onCloseUpdate = () => {
     setUpdate(false);
   };
+
+  // ENDS
 
   // Effect to simulate initial loading
   useEffect(() => {
@@ -228,6 +233,7 @@ function Home() {
     return <Loader />
   }
   // ENDS
+
 
   return (
     <div className="">
@@ -254,20 +260,31 @@ function Home() {
             <h1>Organize, Manage, Shop <br />Simplify Your Life!</h1>
             <div className="social">
               <div className="box">
-                <FaFacebookF className="social-icon" />
+                <a href="https://www.facebook.com/your-profile" target="_blank" rel="noopener noreferrer">
+                  <FaFacebookF className="social-icon" />
+                </a>
               </div>
               <div className="box">
-                <FaXTwitter className="social-icon" />
+                <a href="https://twitter.com/your-profile" target="_blank" rel="noopener noreferrer">
+                  <FaXTwitter className="social-icon" />
+                </a>
               </div>
               <div className="box">
-                <IoLogoInstagram className="social-icon" />
+                <a href="https://www.instagram.com/your-profile" target="_blank" rel="noopener noreferrer">
+                  <IoLogoInstagram className="social-icon" />
+                </a>
               </div>
               <div className="box">
-                <FaWhatsapp className="social-icon" />
+                <a href="https://wa.me/your-whatsapp-number" target="_blank" rel="noopener noreferrer">
+                  <FaWhatsapp className="social-icon" />
+                </a>
               </div>
               <div className="box">
-                <SlSocialLinkedin className="social-icon" />
+                <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">
+                  <SlSocialLinkedin className="social-icon" />
+                </a>
               </div>
+
             </div>
             {isSignIn ? (
               <button onClick={onOpenUpdate}>
@@ -304,6 +321,7 @@ function Home() {
           
         </footer>
         {/* FOOTER ENDS */}
+        
       </header>
       {/* HEADER ENDS */}
 

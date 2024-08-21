@@ -319,7 +319,7 @@ function Dashboard() {
 
   const [editItemId, setEditItemId] = useState(null);
 
-  // 
+  // FETCHING ITEMS FOR THE USER
   useEffect(() => {
     if (user) {
       dispatch(fetchItems(user.id));
@@ -335,21 +335,55 @@ function Dashboard() {
   // HANDLES SUBMIT FOR EDITING
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (editItemId) {
-      dispatch(updateItem(editItemId, formData, user.id));
-    } else if (user) {
-      dispatch(addItem(user.id, formData));
+  
+    // CHECK IF USER OBJECT IS AVAILABLE
+    if (!user || !user.id) {
+      console.error('User is not authenticated or user ID is missing.');
+      alert('Unable to perform the operation. User data is not available.');
+      return;
     }
+  
+    // PREPARE FORM DATA WITH USER ID
+    const updatedFormData = {
+      ...formData,
+      userId: user.id
+    };
+  
+    if (editItemId) {
+      // HANDLE EDITING ITEM
+      dispatch(updateItem(editItemId, updatedFormData))
+        .then(() => {
+          alert('Item updated successfully');
+        })
+        .catch((error) => {
+          console.error('Error updating item:', error);
+          alert('Failed to update item');
+        });
+    } else {
+      // HANDLE ADDING NEW ITEM
+      dispatch(addItem(user.id, updatedFormData))
+        .then(() => {
+          alert('Item added successfully');
+        })
+        .catch((error) => {
+          console.error('Error adding item:', error);
+          alert('Failed to add item');
+        });
+    }
+  
+    // RESET FORM AFTER SUBMITTING SUCCESSFULLY
     setFormData({
       item: '',
       description: '',
       quantity: '',
       category: '',
-      userId: user.id
+      userId: user.id 
     });
     setEditItemId(null);
     dispatch(hidePopup());
   };
+  
+
 
  // HANDLES EDIT
 const handleEdit = (itemId, userId) => {
@@ -360,7 +394,7 @@ const handleEdit = (itemId, userId) => {
       description: item.description,
       quantity: item.quantity,
       category: item.category,
-      userId: userId  // Ensures userId is included in the form data
+      userId: userId,
     });
     setEditItemId(itemId);
     dispatch(showPopup());
@@ -370,18 +404,18 @@ const handleEdit = (itemId, userId) => {
 
   // HANDLE DELETE
   const handleDelete = (itemId) => {
-    // Handle delete functionality
     if (user) {
       dispatch(deleteItem(itemId));
     }
   };
+  // ENDS
 
   // HANDLES SHARE
   const handleShare = (itemId) => {
     const shareUrl = `${window.location.origin}/item/${itemId}`; // Construct the URL
 
     if (navigator.share) {
-      // If the Web Share API is supported
+      // WEB SHARE API
       navigator.share({
         title: 'Check out this item!',
         url: shareUrl,
@@ -389,7 +423,7 @@ const handleEdit = (itemId, userId) => {
       .then(() => console.log('Successfully shared'))
       .catch((error) => console.error('Error sharing:', error));
     } else {
-      // Fallback: Copy the URL to the clipboard
+      // COPYING THE LINK
       navigator.clipboard.writeText(shareUrl).then(() => {
         alert('Link copied to clipboard!');
       }).catch((error) => console.error('Error copying link:', error));

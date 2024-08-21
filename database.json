@@ -1,87 +1,34 @@
 {
   "users": [
     {
-      "id": "e65a",
-      "fullName": "Oscar Poco",
-      "email": "okpoco15@gmail.com",
+      "id": "ac2d",
+      "fullName": "oscar",
+      "email": "testing@gmail.com",
       "password": "Oscar@2000"
     },
     {
-      "id": "10c3",
-      "fullName": "Kyle Oscar Chauke",
-      "email": "kyle@gmail.com",
-      "password": "Kyle@2000"
-    },
-    {
-      "id": "b311",
-      "fullName": "TESTER",
-      "email": "TESTER@GAMIL.COM",
-      "password": "123456789"
-    },
-    {
-      "id": "1d99",
-      "fullName": "NIPHO",
-      "email": "okpoco15@gmail.com",
-      "password": "123"
+      "id": "abaa",
+      "fullName": "kyle",
+      "email": "tester@gmail.com",
+      "password": "Poco@2000"
     }
   ],
   "items": [
     {
-      "id": "a371",
-      "item": "Brai Pack",
-      "description": "10kg",
-      "quantity": "9",
-      "category": "grocery",
-      "userId": "10c3"
-    },
-    {
-      "id": "46e4",
-      "item": "Sweets",
-      "description": "YUMMY",
-      "quantity": "5",
-      "category": "",
-      "Tag": "A",
-      "userId": "e65a"
-    },
-    {
-      "id": "a339",
-      "item": "",
-      "description": "",
-      "quantity": "",
-      "category": "",
-      "userId": "e65a"
-    },
-    {
-      "id": "01f8",
-      "item": "WV Golf 7R",
-      "description": "Sports car",
-      "quantity": "1",
-      "category": "Car",
-      "userId": "e65a"
-    },
-    {
-      "id": "8c11",
+      "id": "26b4",
       "item": "Huawei Matebook xpro",
-      "description": "Electronics",
+      "description": "10kg",
       "quantity": "1",
-      "category": "Laptop",
-      "userId": "e65a"
+      "category": "1",
+      "userId": "abaa"
     },
     {
-      "item": "Monitor",
-      "description": "gaming monitor",
+      "id": "f103",
+      "item": "Meal",
+      "description": "10kg",
       "quantity": "1",
-      "category": "electronics",
-      "userId": "b311",
-      "id": "5ef0"
-    },
-    {
-      "id": "e246",
-      "item": "Brai Pack",
-      "description": "5kg",
-      "quantity": "2",
-      "category": "grocery",
-      "userId": "b311"
+      "category": "Grocery",
+      "userId": "abaa"
     }
   ]
 }

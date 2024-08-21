@@ -534,6 +534,7 @@ const initialState = {
   confirmLogout: false,
   signInForm: false,
   signUpForm: false,
+  loading: false,
   userProfile: {},
   users: [],
   user: null,
@@ -863,8 +864,6 @@ const reducer = (state = initialState, action) => {
         // CASES FOR HANDLING LOADING , BUT IT SEEMS NOT TO WORKING ON SOME COMPONENTS
     case SET_LOADING:
       return { ...state, loading: action.payload };
-    case SIGN_IN:
-      return { ...state, isSignIn: true };
       // ENDS
       
     default:
