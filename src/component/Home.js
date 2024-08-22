@@ -185,6 +185,7 @@ import {
 
 } from '../store';
 
+
 // COMPONENTS
 import Login from './Login';
 import SignUp from './SignUp';
@@ -274,6 +275,8 @@ function Home() {
 
         {/* COVER  , THIS CONTAINER CONTAINS MY CONTENT ONHOME PAGE*/}
         <div className="cover">
+
+          {/* LEFT CONTAINER */}
           <div className="left">
             <h1>Organize, Manage, Shop <br />Simplify Your Life!</h1>
             <div className="social">
@@ -314,10 +317,16 @@ function Home() {
               </button>
             )}
           </div>
+          {/* LEFT CONTAINER ENDS */}
+
+
+          {/*RIGHT CONRAINER  */}
           <div className="right">
             <img src="/trolley.jpeg" alt="trolley" />
           </div>
         </div>
+        {/* RIGHT CONTAINER ENDS */}
+        
         {/* COVER ENDS */}
 
         {/* FOOTER */}

@@ -336,7 +336,7 @@ function Dashboard() {
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    // CHECK IF USER OBJECT IS AVAILABLE
+  // CHECK IF USER OBJECT IS AVAILABLE
     if (!user || !user.id) {
       console.error('User is not authenticated or user ID is missing.');
       alert('Unable to perform the operation. User data is not available.');
@@ -407,6 +407,7 @@ const handleEdit = (itemId, userId) => {
     if (user) {
       dispatch(deleteItem(itemId));
     }
+    alert('Deleted Successfully');
   };
   // ENDS
 

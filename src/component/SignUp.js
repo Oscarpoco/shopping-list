@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerUser, closeSignUpForm, updateProfile , signIn} from '../store';
+import { registerUser, closeSignUpForm, updateProfile , openSignInForm} from '../store';
 
 function SignUp({ onUpdateProfile, handleCloseUpdateProfile }) {
   const dispatch = useDispatch();
@@ -83,8 +83,9 @@ function SignUp({ onUpdateProfile, handleCloseUpdateProfile }) {
       };
   
       dispatch(registerUser(newUser)).then(() => {
+        alert('Registered successfully, Please Sign In');
         dispatch(closeSignUpForm());
-        dispatch(signIn());
+        dispatch(openSignInForm());
       }).catch(error => {
         console.error('Registration error:', error);
         alert('Failed to register. Please try again.');
@@ -156,7 +157,6 @@ function SignUp({ onUpdateProfile, handleCloseUpdateProfile }) {
             />
           </div>
           <button type="submit">{onUpdateProfile ? 'Update' : 'Submit'}</button>
-          <p>Privacy & </p>
         </form>
         {/* ENDS */}
         <button onClick={() => dispatch(closeSignUpForm())} className="close">

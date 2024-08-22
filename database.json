@@ -1,11 +1,7 @@
 {
   "users": [
-    {
-      "id": "e44a",
-      "fullName": "oscar",
-      "email": "user@gmail.com",
-      "password": "Oscar@2000"
-    }
   ],
-  "items": []
+  "items": [
+    
+  ]
 }

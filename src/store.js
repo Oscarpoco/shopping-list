@@ -748,6 +748,7 @@ export const fetchItems = (userId) => {
 
 // ADD A NEW ITEM FOR THE LOGGED-IN USER
 export const addItem = (userId, itemData) => {
+  
   return async (dispatch) => {
     try {
       const response = await fetch('http://localhost:3003/items', {
