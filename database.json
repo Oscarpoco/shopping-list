@@ -1,7 +1,20 @@
 {
   "users": [
+    {
+      "id": "77c3",
+      "fullName": "oscar",
+      "email": "okpoco15@gmail.com",
+      "password": "Oscar@2000"
+    }
   ],
   "items": [
-    
+    {
+      "id": "9c76",
+      "item": "Huawei Matebook xpro",
+      "description": "Electronics",
+      "quantity": "5",
+      "category": "laptop",
+      "userId": "77c3"
+    }
   ]
 }
